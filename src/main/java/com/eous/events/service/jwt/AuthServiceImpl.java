@@ -27,13 +27,13 @@ public class AuthServiceImpl implements AuthService {
     public LoginResDto signIn(LoginReqDto loginReqDto) throws Exception {
 
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginReqDto.getEmail(), loginReqDto.getPassword())
+                new UsernamePasswordAuthenticationToken(loginReqDto.getUsername(), loginReqDto.getPassword())
         );
 
         // System.out.println(authentication);
         // SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        var person = personRepository.findByEmail(loginReqDto.getEmail())
+        var person = personRepository.findByEmail(loginReqDto.getUsername())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid email or password !"));
 
         String jwt = jwtService.generateToken(person);
@@ -43,6 +43,7 @@ public class AuthServiceImpl implements AuthService {
         loginResDto.setName(person.getName());
         loginResDto.setEmail(person.getEmail());
         loginResDto.setRole(person.getRole());
+        loginResDto.setJobTitle(person.getJobTitle());
         loginResDto.setDob(String.valueOf(person.getDob()));
         loginResDto.setToken(jwt);
 

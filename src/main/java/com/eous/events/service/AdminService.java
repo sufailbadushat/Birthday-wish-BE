@@ -35,6 +35,7 @@ public class AdminService {
         userResDto.setId(person.getId());
         userResDto.setName(person.getName());
         userResDto.setEmail(person.getEmail());
+        userResDto.setJobTitle(person.getJobTitle());
         userResDto.setDob(String.valueOf(person.getDob()));
         return userResDto;
     }

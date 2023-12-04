@@ -19,6 +19,7 @@ public class LoginResDto {
     private String name;
     private String email;
     private String dob;
+    private String jobTitle;
     private Role role;
     private String token;
 }

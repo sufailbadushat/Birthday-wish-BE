@@ -29,6 +29,8 @@ public class Person implements UserDetails {
     @Column(nullable = false)
     private String email;
 
+    private String jobTitle;
+
     private LocalDate dob;
 
     @Column(nullable = false)

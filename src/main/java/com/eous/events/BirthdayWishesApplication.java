@@ -29,6 +29,7 @@ public class BirthdayWishesApplication implements CommandLineRunner {
 			Person person = new Person();
 			person.setEmail("admin@gmail.com");
 			person.setName("admin");
+			person.setJobTitle("Sr. Hr");
 			person.setDob(LocalDate.now());
 			person.setRole(Role.ADMIN);
 			person.setPassword(new BCryptPasswordEncoder().encode("admin"));

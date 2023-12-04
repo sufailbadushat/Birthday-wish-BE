@@ -11,6 +11,7 @@ public class UserResDto {
     private long id;
     private String name;
     private String email;
+    private String jobTitle;
     private String dob;
 
 }
