@@ -1,5 +1,6 @@
 package com.eous.events.service;
 
+import com.eous.events.dto.response.BirthdayWish;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -31,14 +32,26 @@ public class EventService {
         return sseEmitter;
     }
 
-    public String sendEvent(long userId) {
+    public String sendEvent(long userId, String desc) {
         SseEmitter emitter = emitters.get(userId);
 
-        String msg = "Happy Birthday!";
+        log.info(desc + " desc value");
+// Admin can pass without description so, it will be set as description
+        String title = "Happy Birthday !";
+        if (desc == null || desc.isEmpty()) {
+            desc = "We hope your special day will bring you lots of happiness, love, and fun. You deserve them a lot. Enjoy! Hope your day goes great!";
+        }
+
+
+// Create new Birthday wish pojo dto class obj and set title and description
+        BirthdayWish wish = new BirthdayWish();
+        wish.setTitle(title);
+        wish.setDescription(desc);
+
 
         try {
             if (emitter != null) {
-                emitter.send(SseEmitter.event().name("wish").data(msg));
+                emitter.send(SseEmitter.event().name("wish").data(wish));
                 return "Success!";
             }
         } catch (IOException ex) {

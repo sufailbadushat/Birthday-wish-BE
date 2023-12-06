@@ -29,11 +29,11 @@ public class EventController {
 
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     @GetMapping("/sendEvent")
-    public ResponseEntity<?> dispatchEvent(@RequestParam("userId") long userId) {
+    public ResponseEntity<?> dispatchEvent(@RequestParam("userId") long userId, @RequestParam(value = "desc", required = false) String description) {
 
-        String msg = eventService.sendEvent(userId);
+        String msg = eventService.sendEvent(userId, description);
 
-        return msg.equals("Success!") ? new ResponseEntity<>(msg, HttpStatus.OK) : null;
+        return msg.equals("Success!") ? new ResponseEntity<>(msg, HttpStatus.OK) : new ResponseEntity<>("Employee is not subscribed!", HttpStatus.OK);
 
     }
 }
