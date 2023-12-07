@@ -13,6 +13,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
     Person findByRole(Role role);
     Optional<Person> findByEmail(String email);
 
-    @Query("SELECT p FROM Person p WHERE FUNCTION('DATE', p.dob) = CURRENT_DATE")
-    List<Person> findAllByDobIsCurrentDate();
+    @Query("SELECT p FROM Person p WHERE MONTH(p.dob) = MONTH(CURRENT_DATE) AND DAY(p.dob) = DAY(CURRENT_DATE)")
+    List<Person> findAllByDob();
+
 }

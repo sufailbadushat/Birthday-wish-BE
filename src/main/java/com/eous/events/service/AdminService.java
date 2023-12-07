@@ -3,10 +3,13 @@ package com.eous.events.service;
 import com.eous.events.dto.response.LoginResDto;
 import com.eous.events.dto.response.UserResDto;
 import com.eous.events.entity.Person;
+import com.eous.events.entity.Role;
 import com.eous.events.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,13 +22,21 @@ public class AdminService {
     public List<UserResDto> getAll() {
         return personRepository.findAll()
                 .stream()
+                .filter(person -> person.getRole().equals(Role.USER))
                 .map(this::modelToDtoConverter)
                 .collect(Collectors.toList());
     }
 
     public List<UserResDto> getBirthDayEmp() {
-        return personRepository.findAllByDobIsCurrentDate()
+
+//        LocalDate currentDate = LocalDate.now();
+//        .filter(person -> Role.USER.equals(person.getRole()) &&
+//                person.getDob().getMonth() == currentDate.getMonth() &&
+//                person.getDob().getDayOfMonth() == currentDate.getDayOfMonth())
+
+        return personRepository.findAllByDob()
                 .stream()
+                .filter(person -> Role.USER.equals(person.getRole()))
                 .map(this::modelToDtoConverter)
                 .collect(Collectors.toList());
     }

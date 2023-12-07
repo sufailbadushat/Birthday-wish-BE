@@ -1,7 +1,5 @@
 # EOUS-birthday-wish-Application
 
-# Diffrenz-Assignment
-
 ## 1. Getting Started
 ### Prerequisites
 ```
@@ -37,7 +35,7 @@
 - **GET** /sse/sendEvent?userId={userId}&desc={msg}: To send SSE(msg) to the user based on the employee ID.
 ```
    
-## 4. Working 
+## 4. Work Flow
 
 ### Start both Angular and SpringBoot code
 Make sure the application successfully compiled and started without any error.

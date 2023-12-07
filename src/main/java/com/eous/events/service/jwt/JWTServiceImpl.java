@@ -19,7 +19,7 @@ public class JWTServiceImpl implements JWTService {
     public String generateToken(UserDetails userDetails) {
         return Jwts.builder().setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 600000))
+                .setExpiration(new Date(System.currentTimeMillis() + 60*60*1000)) // Set token expiry for one hr - 60 minutes * 60 seconds * 1000 milliseconds
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
                 .compact();
 
@@ -57,7 +57,7 @@ public class JWTServiceImpl implements JWTService {
     }
 
     private Key getSignKey() {
-        byte[] key = Decoders.BASE64.decode("28466930741549382929485932094232343638404244464850");
+        byte[] key = Decoders.BASE64.decode("28466930741549382929485932094232343638404244464850555657585960");
         return Keys.hmacShaKeyFor(key);
        // return Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
