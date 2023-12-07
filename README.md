@@ -3,7 +3,7 @@
 ## 1. Getting Started
 ### Prerequisites
 ```
-- Java
+- Java - JDK 17
 - Node
 - Angular CLI
 - MySQL
@@ -18,8 +18,14 @@
 - git clone https://github.com/sufailbadushat/EOUS-birthday-wish-BE.git
 ```
 ## 2. Database Setup
- - Create a new database named **eous_birthdaydb**. 
- - or Configure the database setup in application.properties/yml based on your database properties.
+- Create a new database named **eous_birthdaydb**. 
+- or Configure the database setup in application.properties/yml based on your database properties.
+
+- Have configured a command line runner interface to insert all employee details into the database for the first application run.
+- See the main file,
+```
+src/main/java/com.eous.events/BirthdayWishesApplication
+```
    
 ## 3. Available Endpoints
 
