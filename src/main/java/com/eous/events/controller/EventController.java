@@ -36,4 +36,5 @@ public class EventController {
         return msg.equals("Success!") ? new ResponseEntity<>(msg, HttpStatus.OK) : new ResponseEntity<>("Employee is not subscribed!", HttpStatus.OK);
 
     }
+
 }
