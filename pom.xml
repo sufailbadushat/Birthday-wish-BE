@@ -103,6 +103,8 @@
 				</configuration>
 			</plugin>
 		</plugins>
+
+		<finalName>Wish-Application</finalName>
 	</build>
 
 </project>
